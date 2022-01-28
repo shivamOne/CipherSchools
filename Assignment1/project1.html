@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style> 
+    body {
+    height:100%;
+    }
+    
+    .paper {
+    width: 1000px;
+    margin: 40px auto;
+    color:rgb(7, 74, 173);
+    text-align:center;
+ 
+    }
+    
+   
+    
+    #seconds, #tens{
+      font-size:2em;
+    }
+    
+    button{
+    background:rgb(255, 0, 55);
+    color:rgb(8, 8, 8);
+    border: solid 1px rgb(4, 174, 253);
+    text-decoration:none;
+    cursor:pointer;
+    font-size:1.5em;
+    padding:18px 14px;
+    width:180px;
+    margin: 9px;
+    }
+    
+    </style>
+
+</head>
+<body>
+
+
+    <script>
+        window.onload = function () {
+
+var seconds = 00; 
+var tens = 00; 
+var appendTen = document.getElementById("tens")
+var appendSecond = document.getElementById("seconds")
+var butnStart = document.getElementById('start');
+var butnStop = document.getElementById('stop');
+var butnReset = document.getElementById('reset');
+var Interval ;
+
+butnStart.onclick = function() {
+
+clearInterval(Interval);
+ Interval = setInterval(startTimer, 10);
+}
+
+butnStop.onclick = function() {
+   clearInterval(Interval);
+}
+
+
+butnReset.onclick = function() {
+ clearInterval(Interval);
+tens = "00";
+  seconds = "00";
+appendTen.innerHTML = tens;
+  appendSecond.innerHTML = seconds;
+}
+
+
+
+function startTimer () {
+tens++; 
+
+if(tens <= 9){
+  appendTen.innerHTML = "0" + tens;
+}
+
+if (tens > 9){
+  appendTen.innerHTML = tens;
+  
+} 
+
+if (tens > 99) {
+  console.log("seconds");
+  seconds++;
+  appendSecond.innerHTML = "0" + seconds;
+  tens = 0;
+  appendTen.innerHTML = "0" + 0;
+}
+
+if (seconds > 9){
+  appendSecond.innerHTML = seconds;
+}
+
+}
+
+
+}
+
+        </script>
+        
+    <div class="paper">
+        <h1>Stopwatch</h1>
+        <p><span id="seconds">00</span>:<span id="tens">00</span></p>
+        <button id="start">START</button>
+        <button id="stop">STOP</button>
+        <button id="reset">reset</button>
+        </div> 
+
+
+
+
+</body>
+</html>
